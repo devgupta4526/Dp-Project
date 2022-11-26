@@ -46,6 +46,7 @@ public class CompanyDirector extends WorkApprover implements Employee
     }
 
     public void addEmployeeManager(Employee emp , Manager manager){
+        // add emp under manager
         String name = manager.getName();
         String pos = manager.getPosition();
         long id = manager.getEmpId();
@@ -57,7 +58,7 @@ public class CompanyDirector extends WorkApprover implements Employee
     @Override
     public void ApproveWork(Work i) {
         if (i.getAmount() <= 150000)
-            System.out.println("Work of " + i.getAmount() + " approved by the Company Director");
+            System.out.println("Work approved by the Company Director");
         else
             System.out.println("Work is not approved by the Company Director");
     }
