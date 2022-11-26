@@ -28,6 +28,7 @@ public class CompanyDirector extends WorkApprover implements Employee
     @Override
     public void showEmployeeDetails()
     {
+
         for(Employee emp:employeeList)
         {
             emp.showEmployeeDetails();
@@ -44,11 +45,20 @@ public class CompanyDirector extends WorkApprover implements Employee
         employeeList.remove(emp);
     }
 
+    public void addEmployeeManager(Employee emp , Manager manager){
+        String name = manager.getName();
+        String pos = manager.getPosition();
+        long id = manager.getEmpId();
+       List<Employee> listMan = manager.getListManager();
+       listMan.add(emp);
+       manager = new Manager(id,name,pos,listMan);
+    }
+
     @Override
     public void ApproveWork(Work i) {
-        if (i.getAmount() <= 100000)
-            System.out.println("Loan amount of " + i.getAmount() + " approved by the Company Director");
+        if (i.getAmount() <= 150000)
+            System.out.println("Work of " + i.getAmount() + " approved by the Company Director");
         else
-            nextApprover.ApproveWork(i);
+            System.out.println("Work is not approved by the Company Director");
     }
 }

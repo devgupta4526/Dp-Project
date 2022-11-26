@@ -19,8 +19,8 @@ public class Developer extends WorkApprover implements Employee
 
     @Override
     public void ApproveWork(Work i) {
-        if (i.getAmount() <= 100000)
-            System.out.println("Loan amount of " + i.getAmount() + " approved by the Developer");
+        if (i.getAmount() <= 100)
+            System.out.println("Work of " + i.getAmount() + " approved by the Developer");
         else
             nextApprover.ApproveWork(i);
     }

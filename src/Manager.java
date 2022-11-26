@@ -7,6 +7,20 @@ public class Manager extends WorkApprover implements Employee
     private long empId;
     private String position;
 
+    public String getName() {
+        return name;
+    }
+
+    public long getEmpId() {
+        return empId;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+
+
     public Manager(long empId, String name, String position)
     {
         this.empId = empId;
@@ -14,31 +28,39 @@ public class Manager extends WorkApprover implements Employee
         this.position = position;
     }
 
+    public Manager(long empId, String name, String position,List<Employee> elist)
+    {
+        this.empId = empId;
+        this.name = name;
+        this.position = position;
+        this.employeeList =  elist;
+    }
+
+    Manager(List<Employee> elist){
+        this.employeeList = elist;
+    }
+
     private List<Employee> employeeList = new ArrayList<Employee>();
 
     @Override
     public void showEmployeeDetails()
     {
+        System.out.println(empId+" " +name);
         for(Employee emp:employeeList)
         {
             emp.showEmployeeDetails();
         }
     }
 
-    public void addEmployee(Employee emp)
-    {
-        employeeList.add(emp);
+   List<Employee> getListManager(){
+        return employeeList;
     }
 
-    public void removeEmployee(Employee emp)
-    {
-        employeeList.remove(emp);
-    }
 
     @Override
     public void ApproveWork(Work i) {
         if (i.getAmount() <= 100000)
-            System.out.println("Loan amount of " + i.getAmount() + " approved by the Company Director");
+            System.out.println("Work of " + i.getAmount() + " approved by the Manager");
         else
             nextApprover.ApproveWork(i);
     }
