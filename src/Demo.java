@@ -1,32 +1,5 @@
 public class Demo {
     public static void main(String[] args) {
-//        Developer dev1 = new Developer(100, "Lokesh Sharma", "Pro Developer");
-//        Developer dev2 = new Developer(101, "Vinay Sharma", "Developer");
-//        CompanyDirector engDirectory = new CompanyDirector();
-//        engDirectory.addEmployee(dev1);
-//        engDirectory.addEmployee(dev2);
-//
-//        Manager man1 = new Manager(200, "Kushagra Garg", "SEO Manager");
-//        Manager man2 = new Manager(201, "Vikram Sharma ", "Kushagra's Manager");
-//
-//        CompanyDirector accDirectory = new CompanyDirector();
-//        accDirectory.addEmployee(man1);
-//        accDirectory.addEmployee(man2);
-//
-//        CompanyDirector directory = new CompanyDirector();
-//        directory.addEmployee(engDirectory);
-//        directory.addEmployee(accDirectory);
-//        directory.showEmployeeDetails();
-//
-//
-//        dev1.SetNextApprover(dev2);
-//        dev2.SetNextApprover(man1);
-//        man1.SetNextApprover(man2);
-//        dev1.ApproveWork(new Work(50000));
-//        dev1.ApproveWork(new Work(200000));
-//        dev1.ApproveWork(new Work(500000));
-//        dev1.ApproveWork(new Work(700000));
-
 
         //setup developer/leaf nodes
         Developer dev1 = new Developer(100, "Lokesh Sharma", "Pro Developer");
@@ -45,7 +18,7 @@ public class Demo {
 
         CompanyDirector director = CompanyDirector.getInstance();
 
-        //creating the organization structure and chain of responsibilities
+        //creating the organization structure
         director.addEmployeeManager(dev1,man1);
         director.addEmployeeManager(dev2,man1);
         director.addEmployeeManager(dev3,man2);
@@ -73,10 +46,22 @@ public class Demo {
         dev5.nextApprover = man4;
         man4.nextApprover = director;
 
+        Work w = new Work(1000);
+        dev2.ApproveWork(w);
 
-
-        Work w = new Work(100000);
+        w = new Work(100000);
         dev1.ApproveWork(w);
+
+        w = new Work(15000);
+        dev3.ApproveWork(w);
+
+        w = new Work(200000);
+        man1.ApproveWork(w);
+
+        w = new Work(1000);
+        dev5.ApproveWork(w);
+
+
 
 
     }

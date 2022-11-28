@@ -60,7 +60,7 @@ public class Manager extends WorkApprover implements Employee
     @Override
     public void ApproveWork(Work i) {
         if (i.getAmount() <= 1000)
-            System.out.println("Work approved by the Manager: " + this.name);
+            System.out.println("Work approved by the Manager: " + this.name + " " + this.position);
         else{
             nextApprover.ApproveWork(new Work(i.getAmount()/100));
         }
